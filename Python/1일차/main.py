@@ -232,18 +232,3 @@
 
 # print('catalog : ')
 # print(catalog)
-
-
-number_of_book = 100
-
-def decrease_book(count_book):
-    print(f"남은 책의 수 : {number_of_book - count_book}")
-    return number_of_book - count_book
-
-# ws_3_3.py
-
-def rental_book(name, count):
-    decrease_book(count)
-    print(f"{name}님이 {count}권의 책을 대여하였습니다.")
-
-rental_book("홍길동", 3)
