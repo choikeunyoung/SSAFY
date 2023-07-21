@@ -2,8 +2,23 @@ import json
 
 
 def best_new_books(books):
-    # 여기에 코드를 작성합니다.  
-    pass
+    books_info = {}
+    for book in books:
+        rep_word = book["id"]
+        detail_info = open(f"data/books/{rep_word}.json", encoding="utf-8")
+        detail_info = json.load(detail_info)
+        books_info[rep_word] = (detail_info["title"], list(map(int,detail_info["pubDate"].split("-"))), detail_info["customerReviewRank"])
+    
+    max_value = 0
+    max_id = 0
+
+    for k,v in books_info.items():
+        if v[1][0] == 2023:
+            if v[2] >= max_value:
+                max_id = k
+                max_value = v[2]
+
+    return books_info[max_id][0]
 
 
 
