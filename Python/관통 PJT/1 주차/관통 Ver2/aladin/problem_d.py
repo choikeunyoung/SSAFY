@@ -20,8 +20,6 @@ def best_book(books):
     
     return books_info[max_id][0]
 
-
-    
 # 아래의 코드는 수정하지 않습니다.
 if __name__ == '__main__':
     books_json = open('data/books.json', encoding='utf-8')
