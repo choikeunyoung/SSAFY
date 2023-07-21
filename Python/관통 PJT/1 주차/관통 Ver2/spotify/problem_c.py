@@ -3,8 +3,27 @@ from pprint import pprint
 
 
 def artist_info(artists, genres):
-    # 여기에 코드를 작성합니다.
-    pass
+    artist_info_list = []
+    for artist in artists:
+        art_dict = {}
+        art_dict["id"] = artist["id"]
+        art_dict["name"] = artist["name"]
+        art_dict["genres_name"] = artist["genres_ids"]
+        art_dict["images"] = artist["images"]
+        art_dict["type"] = artist["type"]
+
+        genres_list = []
+
+        for genres_id in art_dict["genres_name"]:
+            for genre in genres:
+                if genres_id == genre["id"]:
+                    genres_list.append(genre["name"])
+
+        art_dict["genres_name"] = genres_list
+
+        artist_info_list.append(art_dict)
+
+    return artist_info_list
 
 
 # 아래의 코드는 수정하지 않습니다.
