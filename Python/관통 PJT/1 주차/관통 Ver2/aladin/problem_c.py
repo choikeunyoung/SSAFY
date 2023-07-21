@@ -3,8 +3,24 @@ from pprint import pprint
 
 
 def books_info(books, categories):
-    # 여기에 코드를 작성합니다.  
-    pass
+    books_list = []
+    for book in books:
+        book_dict = {}
+        book_dict["id"] = book["id"]
+        book_dict["title"] = book["title"]
+        book_dict["author"] = book["author"]
+        book_dict["priceSales"] = book["priceSales"]
+        book_dict["description"] = book["description"]
+        book_dict["cover"] = book["cover"]
+        book_dict["categoryName"] = book["categoryId"]
+        append_list = []
+        for i in book_dict["categoryName"]:
+            for j in categories:
+                if j["id"] == i:
+                    append_list.append(j["name"])
+        book_dict["categoryName"] = append_list
+        books_list.append(book_dict)
+    return books_list
         
 
 
