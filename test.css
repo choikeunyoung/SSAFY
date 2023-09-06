@@ -1,0 +1,26 @@
+.chessboard {
+    width: 800px;
+    height: 800px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.chessboard__line {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.chessboard__line__block__odd {
+    width: 100px;
+    height: 100%;
+    margin: 0;
+}
+
+.chessboard__line__block__even {
+    width: 100px;
+    height: 100%;
+    background-color: black;
+    margin: 0;
+}
