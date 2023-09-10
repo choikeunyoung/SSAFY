@@ -76,6 +76,7 @@
 ### CSS 적용 방법
 
  1. 인라인(Inline) 스타일
+
     - HTML 요소 안에 style 속성 값으로 작성
 
 ```HTML
@@ -91,7 +92,8 @@
     </html>
 ```
 
- 2. 내부(Internal) 스타일 시트
+ 1. 내부(Internal) 스타일 시트
+
     - head 태그 안에 style 태그에 작성
 
 ```HTML
@@ -111,6 +113,7 @@
 ```
 
  3. 외부(External) 스타일 시트
+ 
     - 별도의 CSS 파일 생성 후 HTML link 태그를 사용해 불러오기
 
 ```HTML
