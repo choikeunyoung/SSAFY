@@ -1,0 +1,6 @@
+{% extends "articles/base.html" %}
+
+{% block content %}
+<p>Hello {{ name }}</p>
+<a href="{% url 'articles:dinner' %}">메뉴</a>
+{% endblock content %}

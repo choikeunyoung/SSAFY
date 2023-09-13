@@ -1,0 +1,11 @@
+{% extends "articles/base.html" %}
+
+{% block content %}
+    <form action="https://search.naver.com/search.naver/" method="GET">
+        {% comment %} GET 방식과 POST 방식의 차이 : 보안성 {% endcomment %}
+        {% comment %} http://www.naver.com/?key=value // key value 쌍으로 저장 {% endcomment %}
+        <label for="inputs">검색 : </label>
+        <input type="text" name="query" id="inputs">
+        <button type="submit">제출</button>
+    </form>
+{% endblock content %}
