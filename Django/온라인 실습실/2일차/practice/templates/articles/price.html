@@ -1,0 +1,7 @@
+{% block content %}
+{% if price == 0 %}
+<p>{{ menu }}은/는 없어용</p>
+{% else %}
+<p>{{ menu }} {{ cnt }}개의 가격은 {{ price }}원 입니다.</p>
+{% endif %}
+{% endblock content %}
