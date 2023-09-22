@@ -92,7 +92,7 @@
     </html>
 ```
 
- 1. 내부(Internal) 스타일 시트
+ 2. 내부(Internal) 스타일 시트
 
     - head 태그 안에 style 태그에 작성
 
@@ -121,6 +121,7 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
         <title>My page</title>
     </head>
     <body>
@@ -128,6 +129,13 @@
         <a href="style.css"></a>
     </body>
     </html>
+```
+```CSS
+    /* style.css */
+    h1 {
+        color: blue;
+        background-color: yellow;
+    }
 ```
 
 ### CSS Selectors 특징
