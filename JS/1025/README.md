@@ -260,3 +260,97 @@
  7. Optional chaining("?.")
     - 속성이 없는 중첩 객체를 에러 없이 접근할 수 있음
     - 만약 참조 대상이 null 또는 undefined라면 에러가 발생하는 것 대신 평가를 멈추고 undefined를 반환
+    1. obj?.prop
+
+## JSON
+
+ - JavaScript Object Notation
+ - Key-Value 형태로 이루어진 자료 표기법
+ - JavaScript의 Object와 유사한 구조를 가지고 있지만 JSON은 형식이 있는 문자열
+ - JavaScript에서 JSON을 사용하기 위해서는 Object 자료형으로 변경해야 함
+
+## 참고
+
+### new 연산자
+
+ - JS에서 객체를 하나 생성한다고 하면?
+   - 하나의 객체를 선언하여 생성
+ - 동일한 행텽의 개게를 또 만든다면?
+ - 사용자 정의 객체 타입을 생성
+ - 매개변수
+    1. constructor : 객체 인스턴스의 타입을 기술하는 함수
+    2. arguments : constructor와 함께 호출될 값 목록
+ - new constructor[([arguments])]
+ ```JS
+    function Member(name, age, sId) {
+        this.name = name
+        this.age = age
+        this.sId = sId
+    }
+    
+    const member3 = new Member("Bella", 21, 20226543)
+ ```
+
+### JavaScript "this" 장단점
+
+ - this가 미리 정해지지 않고 호출 방식에 의해 결정되는 것은
+ - 장점
+   - 함수(메서드)를 하나만 만들어 여러 객체에서 재사용할 수 있다는 것
+ - 단점
+   - 이런 유연함이 실수로 이어질 수 있다는 것
+
+## 배열
+
+ - Object : 키로 구분된 데이터 집합(data collection)을 저장하는 자료형
+ - Array : 순서가 있는 데이터 집합을 저장하는 자료구조
+ - 배열 구조
+   - 대괄호([])를 이용해 작성
+   - 배열 요소 자료형 : 제약 없음
+   - length 속성을 사용해 배열에 담김 요소가 몇 개인지 알 수 있음
+
+### 메서드
+
+ - push/pop : 배열 끝 요소를 추가 / 제거
+ - unshify / shift : 배열 앞 요소를 추가 / 제거
+
+### Array Helper Methods
+
+ - 배열을 순회하며 특정 로직을 수행하는 메서드
+
+메서드 | 역할 
+---------|----------
+ forEach | 인자로 주어진 함수(콜백함수)를 배열 요소 각각에 대해 실행 
+ map | 배열 내의 모든 요소 각각에 대해 함수(콜백함수)를 호출하고, 함수 호출 결과를 모아 새로운 배열을 반환
+
+ - forEach 구조
+   - arr.forEach(callback(item[, index[, array]]))
+   - 콜백함수는 3가지 매개변수로 구성
+    1. item : 처리할 배열의 요소
+    2. index : 처리할 배열의 요소 인덱스 (선택 인자)
+    3. array : forEach를 호출한 배열 (선택 인자)
+   - 반환 값 : undefined
+
+ - 콜백 함수(callback function)
+   - 다른 함수에 인자로 전달되는 함수
+
+ - map()
+   - 배열 내의 모든 요소 각각에 대해 함수를 호출하고 함수 호출 결과를 모아 새로운 배열을 반환
+   - 반환 값이 존재함
+   - 새로운 배열을 만들어냄
+
+ 
+방식 | 특징 | 비고
+---------|----------|---------
+ for loop | - 배열의 인덱스를 이용하여 각 요소에 접근<br> - break, continue 사용 가능 | X
+ for...of | - 배열 요소에 바로 접근 가능 <br> - break, continue 사용 가능 | X
+ forEach | - 간결하고 가독성이 높음 <br> - callback 함수를 이용하여 각 요소를 조작하기 용이 <br> - break, continue 사용 불가능 | 사용 권장
+
+### 콜백함수 구조를 사용하는 이유
+
+ 1. 함수의 재 사용성 측면
+    - 함수를 호출하는 코드에서 콜백 함수의 동작을 자유롭게 변경할 수 있음
+    - map 함수는 콜백 함수를 인자로 받아 배열의 각 요소를 순회하며 콜백 함수를 실행
+    - 콜백 함수는 각 요소를 변환하는 로직을 담당하므로, map 함수를 호출하는 코드는 간결하고 가독성이 높아짐
+ 2. 비동기적 처리 측면
+    - setTimeout 함수는 콜백 함수를 인자로 받아 일정 시간이 지난 후 실행
+    - setTimeout 함수는 비동기적으로 콜백 함수를 실행하므로, 다른 코드의 실행을 방해하지 않음
