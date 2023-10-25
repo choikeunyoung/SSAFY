@@ -257,3 +257,6 @@
  6. 유용한 객체 메서드
     - Object.keys()
     - Object.values()
+ 7. Optional chaining("?.")
+    - 속성이 없는 중첩 객체를 에러 없이 접근할 수 있음
+    - 만약 참조 대상이 null 또는 undefined라면 에러가 발생하는 것 대신 평가를 멈추고 undefined를 반환
