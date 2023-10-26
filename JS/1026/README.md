@@ -34,3 +34,57 @@
  3. 사용자의 입력 값을 실시간으로 출력 "+" 버튼 클릭하면 출력한 값의 CSS 스타일을 변경하기
  4. todo 프로그램의 구현
  5. 로또 번호 생성기 구현
+
+
+## 유사 배열 객체
+
+ - 배열보다 메모리를 적게 사용함
+ - 커스터마이징이 가능함
+ - 객체를 배열처럼 인덱스로 접근할 수 있다.
+ - 주의사항
+   - map, filter 등 배열 메서드 사용 못함
+   - forEach는 추가됨!
+ - 유사배열객체 => 배열로 변환
+   ```JS
+    // Array.from 사용
+    const array1 = Array.from(liList);
+
+    // 전개 연산자(...) 사용
+    // Object는 안된다, NodeList 같은 iterable 한 객체만 사용가능
+    const array2 = [...liList];
+
+    // 얕은 복사
+    const num = [1, 2, 3];
+    const num_list = num;
+
+    // 깊은 복사
+    {
+      const num = [1, 2, 3, 4]
+      const num_list = [...num];
+    }
+
+    // 객체의 깊은 복사
+    {
+      const obj = {
+        0: 1,
+        1: 2,
+        2: 3,
+        length: 3
+      }
+      // 문자열 변환 시 참조가 모두 끊어짐
+      // 단점 : 비교적 느리다
+      let numObj = JSON.parse(JSON.stringify(obj))
+
+      // 2차원 배열 깊은복사
+      {
+        let numbers = [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]
+        ]
+        // ... spread 사용시
+        // depth 1 까지만 깊은 복사
+        // depth 2 이상은 모두 얕은 복사
+      }
+    }
+   ```
