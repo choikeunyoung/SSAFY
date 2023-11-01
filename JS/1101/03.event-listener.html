@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="app">
-        <button @click="count++">{{ count }}</button>
+        <button v-on:click="increment">{{ count }}</button>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
@@ -16,12 +16,15 @@
         const app = createApp({
             setup() {
                 const count = ref(0)
+                const increment = function () {
+                    count.value++
+                }
                 return {
-                    count 
+                    count,
+                    increment,
                 }
             }
         })
-
         app.mount("#app")
     </script>
 </body>
