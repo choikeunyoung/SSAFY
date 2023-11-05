@@ -72,6 +72,11 @@
 
 # Asynchronous JavaScript
 
+ 1. 비동기
+ 2. JavaScript와 비동기
+ 3. AJAX
+ 4. Callback과 Promise
+
 ## 비동기
 
  - Synchronous(동기) : 프로그램의 실행 흐름이 순차적으로 진행
@@ -96,10 +101,10 @@
    4. Event Loop
 
  - 브라우저 환경에서 JavaScript 비동기 처리 동작 방식
- 1. 모든 작업은 Call Stack(LIFO)으로 들어간 후 처리된다.
- 2. 오래 걸리는 작업이 Call Stack으로 들어오면 Web API로 보내 별도로 처리하도록 한다.
- 3. Web API에서 처리가 끝난 작업들은 곧바로 Call Stack으로 들어가지 못하고 Task Queue(FIFO)에 순서대로 들어간다.
- 4. Event Loop가 Call Stack이 비어 있는 것을 계속 체크하고 Call Stack이 빈다면 Task Queue에서 가장 오래된(가장 먼저 처리되어 들어온) 작업을 Call Stack으로 보낸다.
+    1. 모든 작업은 Call Stack(LIFO)으로 들어간 후 처리된다.
+    2. 오래 걸리는 작업이 Call Stack으로 들어오면 Web API로 보내 별도로 처리하도록 한다.
+    3. Web API에서 처리가 끝난 작업들은 곧바로 Call Stack으로 들어가지 못하고 Task Queue(FIFO)에 순서대로 들어간다.
+    4. Event Loop가 Call Stack이 비어 있는 것을 계속 체크하고 Call Stack이 빈다면 Task Queue에서 가장 오래된(가장 먼저 처리되어 들어온) 작업을 Call Stack으로 보낸다.
 
  - 비동기 처리 동작 요소
    1. Call Stack
@@ -176,9 +181,32 @@
    1. 가독성
       - 비동기 작업의 순서와 의존 관계를 명확히 표현할 수 있어 코드의 가독성 향상
    2. 에러 처리
+      - 각각 비동기 작업 단계에서 발생하는 에러를 분할에서 처리 가능
    3. 유연성
+      - 각 단계마다 필요한 데이터를 가공하거나 다른 비동기 작업을 수행할 수 있어서 더 복잡한 비동기 흐름을 구성할 수 있음
    4. 코드 관리
+      - 비동기 작업을 분리하여 구성하면 코드를 관리하기 용이
 
     ```JS
-        
+      .then((response) => {
+        imgUrl = response.data[0].url
+        return imgUrl
+      })
+      .then((imgData) => {
+        imgElem = document.createElement("img")
+        imgElem.setAttribute('src', imgData)
+        document.body.appendChild(imgElem)
+      })
+      // 첫번째 then 콜백함수의 반환 값이 이어지는 then 콜백함수의 인자로 전달됨
     ```
+  
+### Promise가 보장하는 것 (vs 비동기 콜백)
+
+ 1. 콜백 함수는 JavaScript의 Event Loop가 현재 실행 중인 Call Stack을 완료하기 이전에는 절대 호출되지 않음
+    - 반면 Promise callback 함수는 Event Queue에 배치되는 엄격한 순서로 호출됨
+
+ 2. 비동기 작업이 성공하거나 실패한 뒤 .then() 메서드를 이용하여 추가한 경우에도 호출 순서를 보장하며 동작
+
+ 3. .then()을 여러 번 사용하여 여러 개의 callback 함수를 추가할 수 있음
+    - 각각의 callback은 주어진 순서대로 하나하나 실행하게 됨
+    - Chaining은 Promise의 가장 뛰어난 장점
