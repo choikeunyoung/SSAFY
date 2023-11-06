@@ -29,7 +29,7 @@
       <li v-for="info in isActiveExhibition" :key="info.id" :class="{'cheap' : info.isCheap, 'expensive' : info.isExpensive }">
         <template v-if="info.isActive">
             <label for="isSelected">전시 관람 하기</label>
-            <input type="checkbox" id="isSelected" v-model="isSelected" :key="info.id">
+            <input type="checkbox" id="isSelected" v-model="info.isSelected"  :key="info.id">
         </template>
         <template v-else>
             <p style="color : red;">전시가 종료되어 관람 할 수 없습니다.</p>
@@ -46,12 +46,11 @@
 
   <script>
     const { createApp, ref, computed } = Vue
-
     const app = createApp({
       setup() {
+        const isSelected = ref(false)
         const isCheap = ref(false)
         const isExpensive = ref(false)
-        const isSelected = ref(false)
         let id = 0
         const isChecked = ref(false)
         const infos = ref([{
@@ -59,6 +58,7 @@
             pos : "부산 시립 미술관",
             price : 1000,
             isActive : true,
+            isSelected : false,
             id : id++
         },
         {
@@ -66,6 +66,7 @@
             pos : "리움 미술관",
             price : 30000,
             isActive : true,
+            isSelected : false,
             id : id++
         },
         {
@@ -73,6 +74,7 @@
             pos : "리움 미술관",
             price : 30000,
             isActive : true,
+            isSelected : false,
             id : id++
         },
         {
@@ -80,6 +82,7 @@
             pos : "국립현대미술관",
             price : 0,
             isActive : true,
+            isSelected : false,
             id : id++
         },
         {
@@ -87,6 +90,7 @@
             pos : "서울 시립 미술관",
             price : 1000,
             isActive : false,
+            isSelected : false,
             id : id++
         },
         {
@@ -94,6 +98,7 @@
             pos : "국제갤러리 서울점",
             price : 15000,
             isActive : false,
+            isSelected : false,
             id : id++
         }
         ])
@@ -108,9 +113,9 @@
             return isChecked.value ? infos.value.filter((info) => info.isActive) : infos.value
         })
 
-        const controlSelectd = () => {
-            return 
-        }
+        // const controlSelectd = () => {
+        //     return 
+        // }
 
         return {
         infos,
