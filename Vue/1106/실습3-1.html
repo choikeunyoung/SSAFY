@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <div id="app">
+    <h1>다양한 전시 정보</h1>
+    <ul>
+      <li v-for="info in infos" :key="info.id">
+        <h3>{{ info.title }}</h3>
+
+        <p>{{ info.pos }}</p>
+        <p>가격 : {{ info.price }}</p>
+        <hr>
+      </li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+      setup() {
+        let id = 0
+        const infos = ref([{
+          title : "무라카미 다카시 : 무라카시좀비",
+          pos : "부산 시립 미술관",
+          price : 1000,
+          id : id++
+        },
+        {
+          title : "마우라치오 카텔란 개인전",
+          pos : "리움 미술관",
+          price : 30000,
+          id : id++
+        },
+        {
+          title : "조선백자전",
+          pos : "리움 미술관",
+          price : 30000,
+          id : id++
+        },
+        {
+          title : "한국 실험미술 1960 - 1970",
+          pos : "국립현대미술관",
+          price : 0,
+          id : id++
+        },
+        {
+          title : "에드워드 호퍼 : 길 위에서",
+          pos : "서울 시립 미술관",
+          price : 1000,
+          id : id++
+        },
+        {
+          title : "알렉산더 칼더 x 이우환",
+          pos : "국제갤러리 서울점",
+          price : 15000,
+          id : id++
+        }
+          ])
+
+        return {
+          infos
+        }
+      }
+    })
+
+    app.mount("#app")
+  </script>
+</body>
+</html>
