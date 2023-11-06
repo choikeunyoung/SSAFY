@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if order %}
+<p>catch : {{ order }} 을/를 받음!</p>
+{% else %}
+<p>catch : 아무것도 받지 못함</p>
+{% endif %}
+<form action="{% url "practice2_2:third" %}">
+    <label for="order">throw : </label>
+    <input type="text" id="order" name="order">
+    <button type="submit">휙</button>
+</form>
+{% endblock content %}

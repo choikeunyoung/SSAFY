@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 40%;
+            border: 1px solid black;
+        }
+        .names {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .names > img {
+            width: 150px;
+        }
+
+        .infos {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .infos__name {
+            text-align: center;
+            
+        }
+        hr {
+            width: 95%;
+        }
+
+        .footer {
+            display: flex;
+            align-items:flex-start;
+            justify-content: end;
+            padding-right: 1rem;
+        }
+
+        .footer > p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="names">
+            <img src="https://lab.ssafy.com/wwaall2626/web_hw_2_4/-/raw/208ff5e9ccba8796394d5f025a4c03f51bea0553/profile.jpg" alt="Profile Image">
+            <h2>Company Name</h2>
+        </div>
+        <div class="infos">
+            <div class="infos__name">
+                <h3>한글 이름</h3>
+                <h4>English Name</h4>
+            </div>
+            <div>
+                <p>Phone Number</p>
+                <p>Email</p>
+            </div>
+        </div>
+        <hr>
+        <div class="footer">
+            <p>description</p>
+        </div>
+    </div>
+</body>
+
+</html>
