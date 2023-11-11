@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'practice_2',
     'practice_3',
     'practice_4',
+    'practice_5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

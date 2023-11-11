@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-	<style>
+  <style>
     li {
       padding: 10px;
       border: 1px solid #ccc;
       margin: 10px 0;
       background-color: #f5f5f5;
     }
+
     .cheap {
       background-color: #e1f7e1;
     }
+
     .expensive {
       background-color: #f7e1e1;
     }
+
     .selected {
       background-color: #ffc;
     }
   </style>
 </head>
+
 <body>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <div id="app">
     <h1>다양한 전시 정보</h1>
-    <h3 v-if="selectedList">관람 예정인 전시 : 관람 예정인 전시가 없습니다.</h3>
-    <h3 v-else>관람 예정인 전시 : 관람 예정인 전시가 없습니다.</h3>
     <div>
-      <h3>관람 예정인 전시 : </h3>
-      <p>예상 총 금액 : </p>
+      <h3 v-show="selectedInfos.length > 0">관람 예정인 전시 : {{ selectedInfos }}</h3>
+      <h3 v-show="selectedInfos.length == 0">관람 예정인 전시 : 관람 예정인 전시가 없습니다.</h3>
+      <p>예상 총 금액 : {{ totalPrice }}</p>
     </div>
-    <h3>관람 예정인 전시가 없습니다.</h3>
     <hr>
     <label for="isActive">전시 중인 정보만 보기</label>
     <input type="checkbox" id="isActive" v-model="isChecked">
     <ul>
-        <li v-for="info in isActiveExhibition" :key="info.id" :class="{'cheap' : info.isCheap, 'expensive' : info.isExpensive }">
-          <template v-if="info.isActive">
-              <label for="isSelected">전시 관람 하기</label>
-              <input type="checkbox" id="isSelected" v-model="info.isSelected"  :key="info.id">
-          </template>
-          <template v-else>
-              <p style="color : red;">전시가 종료되어 관람 할 수 없습니다.</p>
-          </template>
-          <h3>{{ info.title }}</h3>
-          <hr>
-          <p>{{ info.pos }}</p>
-          <p>가격 : {{ info.price }}</p>
-          <p v-if="info.price == 0">무료 전시입니다.</p>
-          <hr>
-        </li>
-      </ul>
+      <li v-for="info in isActiveExhibition" :key="info.id"
+        :class="{'cheap' : info.isCheap, 'expensive' : info.isExpensive }">
+        <template v-if="info.isActive">
+          <label for="isSelected">전시 관람 하기</label>
+          <input type="checkbox" id="isSelected" v-model="info.isSelected" :key="info.id">
+        </template>
+        <template v-else>
+          <p style="color : red;">전시가 종료되어 관람 할 수 없습니다.</p>
+        </template>
+        <h3>{{ info.title }}</h3>
+        <hr>
+        <p>{{ info.pos }}</p>
+        <p>가격 : {{ info.price }}</p>
+        <p v-if="info.price == 0">무료 전시입니다.</p>
+        <hr>
+      </li>
+    </ul>
   </div>
 
   <script>
@@ -67,102 +71,100 @@
         const selectedInfos = ref([])
         const totalPrice = ref(0)
         const infos = ref([{
-            title : "무라카미 다카시 : 무라카시좀비",
-            pos : "부산 시립 미술관",
-            price : 1000,
-            isActive : true,
-            isSelected : false,
-            id : id++
+          title: "무라카미 다카시 : 무라카시좀비",
+          pos: "부산 시립 미술관",
+          price: 1000,
+          isActive: true,
+          isSelected: false,
+          id: id++
         },
         {
-            title : "마우라치오 카텔란 개인전",
-            pos : "리움 미술관",
-            price : 30000,
-            isActive : true,
-            isSelected : false,
-            id : id++
+          title: "마우라치오 카텔란 개인전",
+          pos: "리움 미술관",
+          price: 30000,
+          isActive: true,
+          isSelected: false,
+          id: id++
         },
         {
-            title : "조선백자전",
-            pos : "리움 미술관",
-            price : 30000,
-            isActive : true,
-            isSelected : false,
-            id : id++
+          title: "조선백자전",
+          pos: "리움 미술관",
+          price: 30000,
+          isActive: true,
+          isSelected: false,
+          id: id++
         },
         {
-            title : "한국 실험미술 1960 - 1970",
-            pos : "국립현대미술관",
-            price : 0,
-            isActive : true,
-            isSelected : false,
-            id : id++
+          title: "한국 실험미술 1960 - 1970",
+          pos: "국립현대미술관",
+          price: 0,
+          isActive: true,
+          isSelected: false,
+          id: id++
         },
         {
-            title : "에드워드 호퍼 : 길 위에서",
-            pos : "서울 시립 미술관",
-            price : 1000,
-            isActive : false,
-            isSelected : false,
-            id : id++
+          title: "에드워드 호퍼 : 길 위에서",
+          pos: "서울 시립 미술관",
+          price: 1000,
+          isActive: false,
+          isSelected: false,
+          id: id++
         },
         {
-            title : "알렉산더 칼더 x 이우환",
-            pos : "국제갤러리 서울점",
-            price : 15000,
-            isActive : false,
-            isSelected : false,
-            id : id++
+          title: "알렉산더 칼더 x 이우환",
+          pos: "국제갤러리 서울점",
+          price: 15000,
+          isActive: false,
+          isSelected: false,
+          id: id++
         }
         ])
         infos.value = infos.value.map((element) => {
-            return {
-              ...element,
-              isCheap: element.price <= 5000 ? true : false,
-              isExpensive : element.price >= 20000 ? true : false,
-            }
-          })
+          return {
+            ...element,
+            isCheap: element.price <= 5000 ? true : false,
+            isExpensive: element.price >= 20000 ? true : false,
+          }
+        })
         const isActiveExhibition = computed(() => {
-            return isChecked.value ? infos.value.filter((info) => info.isActive) : infos.value
+          return isChecked.value ? infos.value.filter((info) => info.isActive) : infos.value
         })
-        const selectedList = computed(() => {
-            return selectedInfos.length
-        })
+
 
         const changeInfo = watch(infos.value, () => {
-            const filteredInfos = infos.value.filter((info) => {
-                return info.isSelected
-            })
-            
+          const filteredInfos = infos.value.filter((info) => {
+            return info.isSelected
+          })
 
-            filteredInfos.forEach((filteredinfo) => {
-                totalPrice.value += filteredinfo.price
-            })
+          let total = 0;
+          filteredInfos.forEach((filteredinfo) => {
+            total += filteredinfo.price
+          })
+          totalPrice.value = total
+          selectedInfos.value = filteredInfos.map((filteredinfo) => {
 
-            selectedInfos.value =  filteredInfos.map((filteredinfo) => {
-                
-                return filteredinfo.title 
-            })
-            console.log(selectedInfos.value, totalPrice.value)
+            return filteredinfo.title
+          })
+          console.log(selectedInfos.value, totalPrice.value)
         })
 
         return {
-        infos,
-        isChecked,
-        isActiveExhibition,
-        isCheap,
-        isExpensive,
-        isSelected,
-        selectedInfos,
-        selectedList,
-        changeInfo
+          infos,
+          isChecked,
+          isActiveExhibition,
+          isCheap,
+          isExpensive,
+          isSelected,
+          selectedInfos,
+          changeInfo,
+          totalPrice,
         }
-    }
+      }
     })
 
     app.mount("#app")
     /*
-			1. isSelected가 true인 전시 정보만 담을 selectedInfos 배열을 작성한다.
+      1. isSelected가 true인 전시 정보만 담을 selectedInfos 배열을 작성한다.
       2. isSelected가 true인 전시 정보들의 가격을 합산한 값을 담을 totalPrice 변수를 작성한다.
       3. 전시 정보들을 담은 배열의 value가 변화할 시 다음 코드들이 실행되도록 watch를 활용하시오.
         - isSelected가 true인 객체들만 filtering하여 filterdInfos 배열에 할당한다.
@@ -176,4 +178,5 @@
     */
   </script>
 </body>
+
 </html>
