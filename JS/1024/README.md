@@ -47,7 +47,7 @@
 ## 데이터 타입
 
  - 원시 자료형(Primitive type) : Number ,String, Boolean, undefined, null
- - 참조 자료형(Reference type) : Object, Array, Function)
+ - 참조 자료형(Reference type) : Object, Array, Function
 
 ### 원시 자료형
 

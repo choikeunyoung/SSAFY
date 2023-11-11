@@ -22,4 +22,5 @@ urlpatterns = [
     path('practice2/', include("practice_2.urls")),
     path('practice3/', include("practice_3.urls")),
     path('practice4/', include("practice_4.urls")),
+    path('practice5/', include("practice_5.urls")),
 ]
